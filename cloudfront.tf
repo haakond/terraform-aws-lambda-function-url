@@ -5,7 +5,7 @@ module "cloudfront_logs" {
   count                    = var.provision_cloudfront == true ? 1 : 0
   source                   = "git::https://github.com/terraform-aws-modules/terraform-aws-s3-bucket.git?ref=8a0b697adfbc673e6135c70246cff7f8052ad95a"
   force_destroy            = true # Note: deletes all content from the bucket and then destroys the resource.
-  bucket                   = "cloudfront-logs-${data.aws_caller_identity.current.account_id}"
+  bucket                   = "cloudfront-logs-${data.aws_region.current.name}-${data.aws_caller_identity.current.account_id}"
   control_object_ownership = true
   object_ownership         = "ObjectWriter"
 
