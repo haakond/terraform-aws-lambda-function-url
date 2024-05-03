@@ -8,7 +8,7 @@ module "lambda_function_url_demo" {
   runtime                    = "python3.12"
   source_path                = "${path.module}/src/lambda-function-url-demo/index.py"
   create_lambda_function_url = true
-  authorization_type         = "AWS_IAM"
+  authorization_type         = var.provision_cloudfront == true ? "AWS_IAM" : "NONE"
   timeout                    = 30
   cors = {
     allow_credentials = true
