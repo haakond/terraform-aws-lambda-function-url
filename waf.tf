@@ -4,7 +4,7 @@
 # Common S3 bucket for WAF logs
 resource "aws_cloudwatch_log_group" "waf_cloudwatch_logs" {
   #checkov:skip=CKV_AWS_158: KMS encryption unnecessary for this use-case.
-  count             = var.provision_cloudfront
+  count             = var.provision_cloudfront == true ? 1 : 0
   provider          = aws.us-east-1
   name              = "aws-waf-logs-lambda-function-url-demo"
   retention_in_days = 365
@@ -25,7 +25,7 @@ resource "aws_cloudwatch_log_resource_policy" "example" {
 # Create a Web ACL
 resource "aws_wafv2_web_acl" "lambda_function_url_demo" {
   #checkov:skip=CKV2_AWS_31: WAF2 logging configuration not necessary for this use-case.
-  count       = var.provision_cloudfront
+  count       = var.provision_cloudfront == true ? 1 : 0
   provider    = aws.us-east-1
   name        = "lambda_function_url_demo"
   description = "Web ACL with managed rule groups for lambda_function_url_demo"
