@@ -37,7 +37,7 @@ resource "aws_cloudfront_distribution" "lambda_function_url_demo" {
   provider = aws.us-east-1
   origin {
     domain_name              = local.lambda_function_url_demo_domain_name
-    origin_access_control_id = aws_cloudfront_origin_access_control.cloudfront_oac_lambda_url.id
+    origin_access_control_id = aws_cloudfront_origin_access_control.cloudfront_oac_lambda_url[0].id
     origin_id                = local.lambda_function_origin_id
 
     custom_origin_config {
@@ -96,7 +96,7 @@ resource "aws_cloudfront_distribution" "lambda_function_url_demo" {
     cloudfront_default_certificate = true
     minimum_protocol_version       = "TLSv1.2_2018"
   }
-  web_acl_id = aws_wafv2_web_acl.lambda_function_url_demo.arn
+  web_acl_id = aws_wafv2_web_acl.lambda_function_url_demo[0].arn
 }
 
 # Amazon Cloudfront distribution OAC
