@@ -5,21 +5,21 @@
 resource "aws_cloudwatch_log_group" "waf_cloudwatch_logs" {
   #checkov:skip=CKV_AWS_158: KMS encryption unnecessary for this use-case.
   count             = var.provision_cloudfront == true ? 1 : 0
-  provider          = aws.us-east-1
+  provider          = aws-us-east-1
   name              = "aws-waf-logs-lambda-function-url-demo"
   retention_in_days = 365
 }
 
 resource "aws_wafv2_web_acl_logging_configuration" "waf_cloudwatch_logs_config" {
   count                   = var.provision_cloudfront == true ? 1 : 0
-  provider                = aws.us-east-1
+  provider                = aws-us-east-1
   log_destination_configs = [aws_cloudwatch_log_group.waf_cloudwatch_logs[0].arn]
   resource_arn            = aws_wafv2_web_acl.lambda_function_url_demo[0].arn
 }
 
 resource "aws_cloudwatch_log_resource_policy" "waf_cloudwatch_logs_resource_policy" {
   count           = var.provision_cloudfront == true ? 1 : 0
-  provider        = aws.us-east-1
+  provider        = aws-us-east-1
   policy_document = data.aws_iam_policy_document.waf_logging[0].json
   policy_name     = "webacl-policy-waf-lambda-function-url-demo"
 }
@@ -28,7 +28,7 @@ resource "aws_cloudwatch_log_resource_policy" "waf_cloudwatch_logs_resource_poli
 resource "aws_wafv2_web_acl" "lambda_function_url_demo" {
   #checkov:skip=CKV2_AWS_31: WAF2 logging configuration not necessary for this use-case.
   count       = var.provision_cloudfront == true ? 1 : 0
-  provider    = aws.us-east-1
+  provider    = aws-us-east-1
   name        = "lambda_function_url_demo"
   description = "Web ACL with managed rule groups for lambda_function_url_demo"
   scope       = "CLOUDFRONT"
