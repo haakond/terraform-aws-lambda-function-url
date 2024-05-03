@@ -6,7 +6,7 @@ module "lambda_function_url_demo" {
   description                = "Lambda Function URL Demo"
   handler                    = "index.lambda_handler"
   runtime                    = "python3.12"
-  source_path                = "./src/lambda-function-url-demo/index.py"
+  source_path                = "${path.module}/src/lambda-function-url-demo/index.py"
   create_lambda_function_url = true
   authorization_type         = "AWS_IAM"
   timeout                    = 30
