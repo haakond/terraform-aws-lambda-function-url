@@ -3,6 +3,6 @@ module "lambda_function_url_demo" {
   # As global resources related to Cloudfront needs to be provisioned in us-east-1, we pass in two different providers.
   providers = {
     aws           = aws
-    aws-us-east-1 = aws-us-east-1
+    aws.us-east-1 = aws.us-east-1
   }
 }

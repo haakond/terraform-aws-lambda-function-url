@@ -34,7 +34,7 @@ resource "aws_cloudfront_distribution" "lambda_function_url_demo" {
   #checxkov:skip=CKV_AWS_111: WAF to come
   #checkov:skip=CKV2_AWS_47: WAF to come
   count    = var.provision_cloudfront == true ? 1 : 0
-  provider = aws-us-east-1
+  provider = aws.us-east-1
   origin {
     domain_name              = local.lambda_function_url_demo_domain_name
     origin_access_control_id = aws_cloudfront_origin_access_control.cloudfront_oac_lambda_url[0].id
