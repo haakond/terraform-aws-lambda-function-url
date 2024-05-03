@@ -57,7 +57,7 @@ resource "aws_cloudfront_distribution" "lambda_function_url_demo" {
 
   logging_config {
     include_cookies = false
-    bucket          = module.cloudfront_logs.s3_bucket_bucket_domain_name
+    bucket          = module.cloudfront_logs[0].s3_bucket_bucket_domain_name
     prefix          = "lambda_function_url_demo"
   }
 

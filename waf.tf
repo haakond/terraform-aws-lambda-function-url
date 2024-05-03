@@ -11,14 +11,16 @@ resource "aws_cloudwatch_log_group" "waf_cloudwatch_logs" {
 }
 
 resource "aws_wafv2_web_acl_logging_configuration" "waf_cloudwatch_logs_config" {
+  count                   = var.provision_cloudfront == true ? 1 : 0
   provider                = aws.us-east-1
   log_destination_configs = [aws_cloudwatch_log_group.waf_cloudwatch_logs[0].arn]
   resource_arn            = aws_wafv2_web_acl.lambda_function_url_demo[0].arn
 }
 
-resource "aws_cloudwatch_log_resource_policy" "example" {
+resource "aws_cloudwatch_log_resource_policy" "waf_cloudwatch_logs_resource_policy" {
+  count           = var.provision_cloudfront == true ? 1 : 0
   provider        = aws.us-east-1
-  policy_document = data.aws_iam_policy_document.waf_logging.json
+  policy_document = data.aws_iam_policy_document.waf_logging[0].json
   policy_name     = "webacl-policy-waf-lambda-function-url-demo"
 }
 
