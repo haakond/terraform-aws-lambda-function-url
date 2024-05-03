@@ -25,10 +25,10 @@ module "lambda_function_url_demo" {
 }
 
 resource "aws_lambda_permission" "allow_cloudfront" {
-  count         = var.provision_cloudfront
+  count         = var.provision_cloudfront == true ? 1 : 0
   statement_id  = "AllowCloudFrontServicePrincipal"
   action        = "lambda:InvokeFunctionUrl"
   function_name = module.lambda_function_url_demo.lambda_function_name
   principal     = "cloudfront.amazonaws.com"
-  source_arn    = aws_cloudfront_distribution.lambda_function_url_demo.id
+  source_arn    = aws_cloudfront_distribution.lambda_function_url_demo[0].id
 }
