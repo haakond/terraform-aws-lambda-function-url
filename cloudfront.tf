@@ -2,7 +2,7 @@
 
 # Common S3 bucket for Cloudfront logs
 module "cloudfront_logs" {
-  count                    = var.provision_cloudfront
+  count                    = var.provision_cloudfront == true ? 1 : 0
   source                   = "git::https://github.com/terraform-aws-modules/terraform-aws-s3-bucket.git?ref=8a0b697adfbc673e6135c70246cff7f8052ad95a"
   force_destroy            = true # Note: deletes all content from the bucket and then destroys the resource.
   bucket                   = "cloudfront-logs-${data.aws_caller_identity.current.account_id}"
@@ -33,7 +33,7 @@ resource "aws_cloudfront_distribution" "lambda_function_url_demo" {
   #checxkov:skip=CKV_AWS_68: WAF to come
   #checxkov:skip=CKV_AWS_111: WAF to come
   #checkov:skip=CKV2_AWS_47: WAF to come
-  count    = var.provision_cloudfront
+  count    = var.provision_cloudfront == true ? 1 : 0
   provider = aws.us-east-1
   origin {
     domain_name              = local.lambda_function_url_demo_domain_name
@@ -101,7 +101,7 @@ resource "aws_cloudfront_distribution" "lambda_function_url_demo" {
 
 # Amazon Cloudfront distribution OAC
 resource "aws_cloudfront_origin_access_control" "cloudfront_oac_lambda_url" {
-  count                             = var.provision_cloudfront
+  count                             = var.provision_cloudfront == true ? 1 : 0
   name                              = "cloudfront_oac_lambda_url"
   description                       = "Policy for Lambda Function URL origins"
   origin_access_control_origin_type = "lambda"

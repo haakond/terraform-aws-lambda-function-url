@@ -53,8 +53,6 @@ See [examples/main.tf](examples/main.tf).
 
 | Name | Description |
 |------|-------------|
-| <a name="output_lambda_function_team_login_arn"></a> [lambda\_function\_team\_login\_arn](#output\_lambda\_function\_team\_login\_arn) | Lambda Function Team Login ARN |
-| <a name="output_lambda_function_team_login_url"></a> [lambda\_function\_team\_login\_url](#output\_lambda\_function\_team\_login\_url) | Lambda Function Team Login URL |
 | <a name="output_lambda_function_url_demo_arn"></a> [lambda\_function\_url\_demo\_arn](#output\_lambda\_function\_url\_demo\_arn) | Lambda Function URL Demo ARN |
 | <a name="output_lambda_function_url_demo_url"></a> [lambda\_function\_url\_demo\_url](#output\_lambda\_function\_url\_demo\_url) | Lambda Function URL Demo URL |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
