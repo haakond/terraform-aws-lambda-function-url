@@ -11,14 +11,13 @@ See [examples/main.tf](examples/main.tf).
 | Name | Version |
 |------|---------|
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.47.0 |
-| <a name="requirement_aws-us-east-1"></a> [aws-us-east-1](#requirement\_aws-us-east-1) | >= 5.47.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.47.0 |
-| <a name="provider_aws-us-east-1"></a> [aws-us-east-1](#provider\_aws-us-east-1) | >= 5.47.0 |
+| <a name="provider_aws-us-east-1"></a> [aws-us-east-1](#provider\_aws-us-east-1) | n/a |
 
 ## Modules
 
@@ -31,11 +30,11 @@ See [examples/main.tf](examples/main.tf).
 
 | Name | Type |
 |------|------|
-| [aws-us-east-1_aws_cloudfront_distribution.lambda_function_url_demo](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_cloudfront_distribution) | resource |
-| [aws-us-east-1_aws_cloudwatch_log_group.waf_cloudwatch_logs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_cloudwatch_log_group) | resource |
-| [aws-us-east-1_aws_cloudwatch_log_resource_policy.waf_cloudwatch_logs_resource_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_cloudwatch_log_resource_policy) | resource |
-| [aws-us-east-1_aws_wafv2_web_acl.lambda_function_url_demo](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_wafv2_web_acl) | resource |
-| [aws-us-east-1_aws_wafv2_web_acl_logging_configuration.waf_cloudwatch_logs_config](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_wafv2_web_acl_logging_configuration) | resource |
+| [aws-us-east-1_aws_cloudfront_distribution.lambda_function_url_demo](https://registry.terraform.io/providers/hashicorp/aws-us-east-1/latest/docs/resources/aws_cloudfront_distribution) | resource |
+| [aws-us-east-1_aws_cloudwatch_log_group.waf_cloudwatch_logs](https://registry.terraform.io/providers/hashicorp/aws-us-east-1/latest/docs/resources/aws_cloudwatch_log_group) | resource |
+| [aws-us-east-1_aws_cloudwatch_log_resource_policy.waf_cloudwatch_logs_resource_policy](https://registry.terraform.io/providers/hashicorp/aws-us-east-1/latest/docs/resources/aws_cloudwatch_log_resource_policy) | resource |
+| [aws-us-east-1_aws_wafv2_web_acl.lambda_function_url_demo](https://registry.terraform.io/providers/hashicorp/aws-us-east-1/latest/docs/resources/aws_wafv2_web_acl) | resource |
+| [aws-us-east-1_aws_wafv2_web_acl_logging_configuration.waf_cloudwatch_logs_config](https://registry.terraform.io/providers/hashicorp/aws-us-east-1/latest/docs/resources/aws_wafv2_web_acl_logging_configuration) | resource |
 | [aws_cloudfront_origin_access_control.cloudfront_oac_lambda_url](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_origin_access_control) | resource |
 | [aws_lambda_permission.allow_cloudfront](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_permission) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
