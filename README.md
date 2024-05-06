@@ -65,4 +65,4 @@ See [contributors.](https://github.com/haakond/terraform-aws-lambda-function-url
 
 ## License
 
-MIT licensed. See [LICENSE](LICENSE). Feel free to fork and use what want. 
+MIT licensed. See [LICENSE](LICENSE). Feel free to fork and make use of what you want. 
