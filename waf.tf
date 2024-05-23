@@ -38,30 +38,8 @@ resource "aws_wafv2_web_acl" "lambda_function_url_demo" {
   }
 
   rule {
-    name     = "AWSManagedRulesCommonRuleSet"
-    priority = 1
-
-    override_action {
-      none {}
-    }
-
-    statement {
-      managed_rule_group_statement {
-        name        = "AWSManagedRulesCommonRuleSet"
-        vendor_name = "AWS"
-      }
-    }
-
-    visibility_config {
-      cloudwatch_metrics_enabled = false
-      metric_name                = "AWSManagedRulesCommonRuleSet"
-      sampled_requests_enabled   = false
-    }
-  }
-
-  rule {
     name     = "AWSManagedRulesAmazonIpReputationList"
-    priority = 2
+    priority = 1
 
     override_action {
       none {}
@@ -77,6 +55,28 @@ resource "aws_wafv2_web_acl" "lambda_function_url_demo" {
     visibility_config {
       cloudwatch_metrics_enabled = false
       metric_name                = "AWSManagedRulesAmazonIpReputationList"
+      sampled_requests_enabled   = false
+    }
+  }
+
+  rule {
+    name     = "AWSManagedRulesWordPressRuleSet"
+    priority = 2
+
+    override_action {
+      none {}
+    }
+
+    statement {
+      managed_rule_group_statement {
+        name        = "AWSManagedRulesWordPressRuleSet"
+        vendor_name = "AWS"
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = false
+      metric_name                = "AWSManagedRulesWordPressRuleSet"
       sampled_requests_enabled   = false
     }
   }
@@ -104,7 +104,7 @@ resource "aws_wafv2_web_acl" "lambda_function_url_demo" {
   }
 
   rule {
-    name     = "AWSManagedRulesWordPressRuleSet"
+    name     = "AWSManagedRulesCommonRuleSet"
     priority = 4
 
     override_action {
@@ -113,14 +113,14 @@ resource "aws_wafv2_web_acl" "lambda_function_url_demo" {
 
     statement {
       managed_rule_group_statement {
-        name        = "AWSManagedRulesWordPressRuleSet"
+        name        = "AWSManagedRulesCommonRuleSet"
         vendor_name = "AWS"
       }
     }
 
     visibility_config {
       cloudwatch_metrics_enabled = false
-      metric_name                = "AWSManagedRulesWordPressRuleSet"
+      metric_name                = "AWSManagedRulesCommonRuleSet"
       sampled_requests_enabled   = false
     }
   }
